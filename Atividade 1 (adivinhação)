@@ -1,0 +1,22 @@
+const numeroSecreto = Math.floor(Math.random() * 50) + 1;
+
+let palpite;
+
+alert("Bem-vindo ao Jogo da Adivinhação! Tente adivinhar o número secreto entre 1 e 50.");
+
+while (palpite !== numeroSecreto) {
+    
+    palpite = parseInt(prompt("Digite o seu palpite (de 1 a 50):"));
+    if (isNaN(palpite)) {
+        alert("Por favor, digite um número válido!");
+        continue; 
+    }
+
+    if (palpite < numeroSecreto) {
+        alert("Errou! O número secreto é MAIOR.");
+    } else if (palpite > numeroSecreto) {
+        alert("Errou! O número secreto é MENOR.");
+    } else {
+        alert("🎉 Parabéns! Você acertou! O número secreto era " + numeroSecreto + ".");
+    }
+}
