@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Times</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center; }
+        .busca-container { margin-bottom: 20px; }
+        input { padding: 10px; width: 250px; font-size: 16px; }
+        button { padding: 10px 15px; font-size: 16px; cursor: pointer; background-color: #007bff; color: white; border: none; }
+        #resultado { margin-top: 20px; display: none; background: white; padding: 20px; border-radius: 8px; display: inline-block; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        #escudo { max-width: 150px; height: auto; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <h1>🔍 Buscar Informações do Time</h1>
+    
+    <div class="busca-container">
+        <input type="text" id="nomeTimeInput" placeholder="Ex: Flamengo, Real Madrid...">
+        <button onclick="buscarTime()">Buscar</button>
+    </div>
+
+    <div id="resultado" style="display: none;">
+        <img id="escudo" src="" alt="Escudo do Time"><br>
+        <h2 id="nomeTime"></h2>
+        <p><strong>Estádio:</strong> <span id="estadio"></span></p>
+        <p><strong>Capacidade:</strong> <span id="capacidade"></span> pessoas</p>
+        <p><strong>Cidade:</strong> <span id="cidade"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
