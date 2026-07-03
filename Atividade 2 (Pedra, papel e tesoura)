@@ -1,0 +1,42 @@
+let escolhaJogador = prompt("Escolha: pedra, papel ou tesoura:");
+
+if (escolhaJogador !== null) {
+    escolhaJogador = escolhaJogador.toLowerCase().trim();
+}
+
+if (escolhaJogador !== "pedra" && escolhaJogador !== "papel" && escolhaJogador !== "tesoura") {
+    alert("Opção inválida! Por favor, recarregue a página e digite apenas 'pedra', 'papel' ou 'tesoura'.");
+} else {
+    
+    const numeroAleatorio = Math.floor(Math.random() * 3);
+    let escolhaComputador;
+
+    if (numeroAleatorio === 0) {
+        escolhaComputador = "pedra";
+    } else if (numeroAleatorio === 1) {
+        escolhaComputador = "papel";
+    } else {
+        escolhaComputador = "tesoura";
+    }
+
+    let resultado;
+
+    if (escolhaJogador === escolhaComputador) {
+        resultado = "Temos um Empate!";
+    } else {
+        if (escolhaJogador === "pedra") {
+            resultado = (escolhaComputador === "tesoura") ? "Muito bem. Você ganhou!" : "Poxa. Você perdeu!";
+        } 
+        else if (escolhaJogador === "papel") {
+            resultado = (escolhaComputador === "pedra") ? "Parabéns. Você ganhou!" : "Infelizmente, você perdeu!";
+        } 
+        else if (escolhaJogador === "tesoura") {
+            resultado = (escolhaComputador === "papel") ? "Ihuuu, você ganhou!" : "Ah, que pena. Você perdeu!";
+        }
+    }
+    alert(
+        "Você escolheu: " + escolhaJogador.toUpperCase() + "\n" +
+        "O Computador escolheu: " + escolhaComputador.toUpperCase() + "\n\n" +
+        "RESULTADO FINAL: " + resultado
+    );
+}
