@@ -1,0 +1,64 @@
+const bancoPalavras = [
+    "javascript", "flutter", "programacao", "banco", "dados",
+    "desenvolvimento", "codigo", "variavel", "funcao", "objeto",
+    "computador", "logica", "algoritmo", "conquista", "tabela"
+];
+
+const palavraSecreta = bancoPalavras[Math.floor(Math.random() * bancoPalavras.length)];
+
+const letrasSecretas = palavraSecreta.split('');
+
+let tabuleiro = Array(letrasSecretas.length).fill("_");
+
+let tentativas = 6;
+let letrasChutadas = []; 
+alert("Bem-vindo ao Jogo da Forca! A palavra secreta tem " + letrasSecretas.length + " letras. Boa sorte!");
+
+while (tentativas > 0 && tabuleiro.includes("_")) {
+    
+    let statusAtualTabuleiro = tabuleiro.join(" ");
+    
+    let chute = prompt(
+        "Palavra: " + statusAtualTabuleiro + "\n" +
+        "Tentativas restantes: " + tentativas + "\n" +
+        "Letras já tentadas: [" + letrasChutadas.join(", ") + "]\n\n" +
+        "Digite APENAS uma letra:"
+    );
+
+    if (chute === null) {
+        alert("Jogo encerrado pelo usuário.");
+        break;
+    }
+
+    chute = chute.trim().toLowerCase();
+
+    if (chute.length !== 1 || !/[a-zà-ú]/i.test(chute)) {
+        alert("Por favor, digite apenas UMA letra válida!");
+        continue;
+    }
+    if (letrasChutadas.includes(chute)) {
+        alert("Você já tentou a letra '" + chute.toUpperCase() + "'! Escolha outra.");
+        continue;
+    }
+
+    letrasChutadas.push(chute);
+
+    if (letrasSecretas.includes(chute)) {
+        alert("Boa! A letra '" + chute.toUpperCase() + "' existe na palavra.");
+        
+        for (let i = 0; i < letrasSecretas.length; i++) {
+            if (letrasSecretas[i] === chute) {
+                tabuleiro[i] = chute.toUpperCase();
+            }
+        }
+    } else {
+        alert("Que pena! A palavra não tem a letra '" + chute.toUpperCase() + "'.");
+        tentativas--;
+    }
+}
+
+if (!tabuleiro.includes("_")) {
+    alert("PARABÉNS! Você salvou o boneco da forca! A palavra era: " + palavraSecreta.toUpperCase());
+} else if (tentativas === 0) {
+    alert("FIM DE JOGO! Suas tentativas acabaram. A palavra secreta era: " + palavraSecreta.toUpperCase());
+}
